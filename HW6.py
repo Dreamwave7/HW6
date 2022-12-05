@@ -13,7 +13,7 @@ name_extensions = {
     "archives" : ('.zip', '.gz', '.tar')
 }
 
-current_path = Path("C:\\test_sorted")
+current_path = Path("C:\\test_sorted")  # використвую такий шлях, бо через sys.argv  не виходить, при виклику файла в терминали видаэ помылку,що його не иснуе
 
 def create_folder(folder):    #створення папок для сортування
     for name in name_extensions.keys():
