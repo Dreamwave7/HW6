@@ -22,7 +22,7 @@ def create_folder(folder):    #створення папок для сортув
         else:
             os.mkdir(f"{folder}\\{name}")
 
-def bypass_files(path_folder):
+def bypass_files(path_folder):  #прохид по папкам и файлам
     for item in path_folder.glob("**/*"):
         if item.is_file():
             sort_file(item)
@@ -33,7 +33,7 @@ def bypass_files(path_folder):
                 continue
 
 
-def sort_file(file):
+def sort_file(file):     #сортуваня файлив
     if file.suffix in name_extensions["images"]:
         shutil.move(file, f"{current_path}\\images")
     if file.suffix in name_extensions["video"]:
@@ -102,19 +102,3 @@ bypass_files(current_path)
 
 
 
-    # shutil.make_archive("images","zip","C:/test_sorted")
-    # current_direct = Path(directory)
-    # for file in current_direct.iterdir():
-    #     if file.suffix in images:
-    #         pass
-    #     if file.suffix in video:
-    #         moving = os.path.join(r"C:\test_sorted\video", file)
-    #     if file.suffix in documents:
-    #         archive_name = shutil.make_archive('backup', 'zip', '//test_sorted')
-    #     if file.suffix in music:
-    #         print ("1 music file")
-    #     if file.suffix in archives:
-    #         print ("1 archive")
-    #
-
-# print(sort_function())
