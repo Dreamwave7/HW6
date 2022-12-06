@@ -15,6 +15,10 @@ name_extensions = {
 
 current_path = Path("C:\\test_sorted")  # використвую такий шлях, бо через sys.argv  не виходить, при виклику файла в терминали видаэ помылку,що його не иснуе
 
+def unpack_arch(archive_path):  #розпакування архиву
+    shutil.unpack_archive(archive_path, f"{current_path}\\archives")
+
+
 def create_folder(folder):    #створення папок для сортування
     for name in name_extensions.keys():
         if os.path.exists(f"{folder}\\{name}"):
