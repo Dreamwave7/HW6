@@ -15,6 +15,17 @@ name_extensions = {
 
 current_path = Path("C:\\test_sorted")  # використвую такий шлях, бо через sys.argv  не виходить, при виклику файла в терминали видаэ помылку,що його не иснуе
 
+
+RUSS_SYMB = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ?<>,!@#[]#$%^&*()-=; "
+ENG_SYMB = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
+               "f", "h", "ts", "ch", "sh", "sch", "", "y", "", "e", "yu", "ya", "je", "i", "ji", "g", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_","_", "_")
+TRANS = {}
+for c, t in zip(RUSS_SYMB, ENG_SYMB):
+    TRANS[ord(c)] = t
+    TRANS[ord(c
+
+
+
 def unpack_arch(archive_path):  #розпакування архиву
     shutil.unpack_archive(archive_path, f"{current_path}\\archives")
 
