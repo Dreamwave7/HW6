@@ -22,7 +22,7 @@ ENG_SYMB = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m"
 TRANS = {}
 for c, t in zip(RUSS_SYMB, ENG_SYMB):
     TRANS[ord(c)] = t
-    TRANS[ord(c
+    TRANS[ord(c.upper()) = t.upper
 
 
 
