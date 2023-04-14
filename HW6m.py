@@ -7,7 +7,7 @@ import sys
 name_extensions = {
     "images": (".jpeg", ".png", ".jpg", "svg"),
     "video": (".avi", ".mp4", ".mov", ".mkv"),
-    "documents": (".doc", ".docx", ".pdf", ".xlsx", ".pptx", "txt"),
+    "documents": (".doc", ".docx", ".pdf", ".xlsx", ".pptx", ".txt"),
     "music": (".mp3", ".ogg", ".wav", ".amr"),
     "archives": (".zip", ".gz", ".tar"),
     "unknown": ""
@@ -78,8 +78,6 @@ ENG_SYMB = (
 
 TRANS = {}
 
-# current_path = Path("C:\\test_sorted")  поганий кейс(
-
 for c, t in zip(RUSS_SYMB, ENG_SYMB):
     TRANS[ord(c)] = t
     TRANS[ord(c.upper())] = t.upper()
@@ -114,9 +112,8 @@ def bypass_files(path_folder):
 
 
 
-def sort_file(
-    file: Path, path_folder: Path
-):  # сорт
+def sort_file(file: Path, path_folder: Path):
+
     if file.suffix in name_extensions["images"]:
         file.replace(path_folder.joinpath("images", f"{normalize(file.stem)}{file.suffix}"))
 
@@ -155,6 +152,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# .\HW6m.py C:\test_sorted
