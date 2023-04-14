@@ -1,8 +1,9 @@
-from pathlib import Path
-import shutil
 import os
+import shutil
 import sys
-
+from pathlib import Path
+from threading import Thread
+from time import sleep
 
 name_extensions = {
     "images": (".jpeg", ".png", ".jpg", "svg"),
@@ -103,7 +104,9 @@ def bypass_files(path_folder):
     create_folder(path_folder)
     for item in path_folder.glob("**/*"):
         if item.is_file():
-            sort_file(item, path_folder)
+            thread_file = Thread(target=sort_file, args=(item, path_folder))
+            thread_file.start()
+            # sort_file(item, path_folder)
         if item.is_dir() and item.name not in list(name_extensions):
             if os.path.getsize(item) == 0:
                 shutil.rmtree(item)
@@ -113,7 +116,6 @@ def bypass_files(path_folder):
 
 
 def sort_file(file: Path, path_folder: Path):
-
     if file.suffix in name_extensions["images"]:
         file.replace(path_folder.joinpath("images", f"{normalize(file.stem)}{file.suffix}"))
 
