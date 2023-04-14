@@ -100,7 +100,7 @@ def create_folder(folder: Path):  # створення папок для сор�
             folder.joinpath(name).mkdir()
 
 
-def bypass_files(path_folder):
+def bypass_files(path_folder: Path):
     create_folder(path_folder)
     for item in path_folder.glob("**/*"):
         if item.is_file():
@@ -116,6 +116,7 @@ def bypass_files(path_folder):
 
 
 def sort_file(file: Path, path_folder: Path):
+    #sleep(4) тестовий сон для перевирки потоку
     if file.suffix in name_extensions["images"]:
         file.replace(path_folder.joinpath("images", f"{normalize(file.stem)}{file.suffix}"))
 
