@@ -88,9 +88,7 @@ def normalize(name: str) -> str:
     return name.translate(TRANS)
 
 
-def unpack_arch(
-    archive_path, current_path
-):  
+def unpack_arch(archive_path, current_path):  
     shutil.unpack_archive(archive_path, rf"{current_path}\\archives")
 
 
@@ -103,6 +101,7 @@ def create_folder(folder: Path):  # створення папок для сор�
 def bypass_files(path_folder: Path):
     create_folder(path_folder)
     for item in path_folder.glob("**/*"):
+        
         if item.is_file():
             thread_file = Thread(target=sort_file, args=(item, path_folder))
             thread_file.start()
@@ -130,8 +129,11 @@ def sort_file(file: Path, path_folder: Path):
         file.replace(path_folder.joinpath("video", f"{normalize(file.stem)}{file.suffix}"))
     
     elif file.suffix in name_extensions["archives"]:
-        shutil.unpack_archive(file, path_folder)
+        shutil.unpack_archive(file, path_folder.joinpath("archives"))
         os.remove(file)
+
+        # thread_arch = Thread(target=bypass_files, args=(path_folder,))
+        # thread_arch.start()
 
     else:
         file.replace(path_folder.joinpath("unknown",f"{normalize(file.stem)}{file.suffix}"))
@@ -149,7 +151,13 @@ def main():
         print("Folder is not exist. Try again.")
         return None
     result_list = list(current_path.iterdir())
-    bypass_files(current_path)
+
+    if len(list(current_path.iterdir())) > 6:
+       bypass_tread = Thread(target=bypass_files, args=(current_path,)) 
+       bypass_tread.start()
+    else:
+        print("lol error")
+    # bypass_files(current_path)
     for i in result_list:
         print(i, "- sorted")
 
