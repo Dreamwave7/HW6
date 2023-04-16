@@ -24,7 +24,7 @@ def factorize(*number):
 
 if __name__ == "__main__":
     timer = time()
-    a,b,c,d = factorize(128,255,99999,10651060)
+    a,b,c,d,e,f,g,v,n,m = factorize(128,255,99999,10651060,1522288,3456886,6568868,8775788,6659000,6568765)
     print(time()- timer)
     #print(cpu_count())   #4ядра
 

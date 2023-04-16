@@ -24,9 +24,9 @@ def factorize(*number):
 
 if __name__ == "__main__":
     timer = time()
-    nums = [128,255,99999,10651060]
+    nums = [128,255,99999,10651060,1522288,3456886,6568868,8775788,6659000,6568765]
     with Pool(processes=4) as pool:
-        print(pool.map(factorize,nums))
+        pool.map(factorize,nums)
     print(time()- timer)
     #print(cpu_count())   #4ядра
 
